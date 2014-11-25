@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from distutils.core import setup
+from setuptools import setup
 
 
 REQUIREMENTS = [i.strip() for i in open("requirements.txt").readlines()]
@@ -25,7 +25,8 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
-        'Topic :: Software Development :: Libraries :: Python Modules'
+        'Topic :: Software Development :: Libraries :: Python Modules',
+        'Framework :: Bottle'
     ],
 )
 
