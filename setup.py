@@ -1,7 +1,6 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-import sys
-import os
 from distutils.core import setup
 
 try:
@@ -9,10 +8,11 @@ try:
 except ImportError:
     from distutils.command.build_py import build_py
 
+
 setup(
     name = 'bottle-redis',
-    version = '0.2.1',
-    url = 'http://github.com/bottlepy/bottle-extras/',
+    version = '0.2.2',
+    url = 'https://github.com/bottlepy/bottle-redis',
     description = 'Redis integration for Bottle.',
     author = 'Sean M. Collins',
     author_email = 'sean@coreitpro.com',

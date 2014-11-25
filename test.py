@@ -1,8 +1,11 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import unittest
 import os
 import bottle
 from bottle.ext import redis as redis_plugin
 import redis
+
 
 class RedisTest(unittest.TestCase):
     def setUp(self):
@@ -37,5 +40,6 @@ class RedisTest(unittest.TestCase):
             self.assertTrue(rdb.connection_pool.connection_kwargs['db'] == 1)
         self.app({'PATH_INFO':'/db/1', 'REQUEST_METHOD':'GET'}, lambda x,y: None)
         
+
 if __name__ == '__main__':
     unittest.main()
