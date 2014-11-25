@@ -22,7 +22,7 @@ setup(
         'bottle_redis'
     ],
     requires = [
-        'bottle (>=0.9)',
+        'bottle>=0.9',
         'redis'
     ],
     classifiers = [
