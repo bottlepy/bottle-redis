@@ -2,9 +2,13 @@
 # -*- coding: utf-8 -*-
 import unittest
 import os
+import sys
 import bottle
 from bottle.ext import redis as redis_plugin
 import redis
+
+py = sys.version_info
+py3k = py >= (3, 0, 0)
 
 
 class RedisTest(unittest.TestCase):
@@ -49,7 +53,10 @@ class RedisTest(unittest.TestCase):
         def test(rdb):
             rdb.set('test', 'bottle')
             r = redis.Redis()
-            self.assertEqual(rdb.get('test'), 'bottle')
+            if py3k:
+                self.assertEqual(rdb.get('test'), b'bottle')
+            else:
+                self.assertEqual(rdb.get('test'), 'bottle')
             self.assertEqual(rdb.get('test'), r.get('test'))
         self.app({'PATH_INFO':'/', 'REQUEST_METHOD':'GET'}, lambda x,y: None)
  
