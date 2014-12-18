@@ -40,11 +40,11 @@ class RedisPlugin(object):
         args = inspect.getargspec(_callback)[0]
         keyword = conf.get('keyword', self.keyword)
         if keyword not in args:
-            return _callback
+            return callback
 
         def wrapper(*args, **kwargs):
             kwargs[self.keyword] = redis.Redis(connection_pool=self.redisdb)
-            rv = _callback(*args, **kwargs)
+            rv = callback(*args, **kwargs)
             return rv
         return wrapper
 
