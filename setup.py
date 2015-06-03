@@ -7,7 +7,7 @@ REQUIREMENTS = [i.strip() for i in open("requirements.txt").readlines()]
 
 setup(
     name = 'bottle-redis',
-    version = '0.2.2',
+    version = '0.2.3',
     url = 'https://github.com/bottlepy/bottle-redis',
     description = 'Redis integration for Bottle.',
     author = 'Sean M. Collins',
