@@ -8,12 +8,11 @@ class RedisPlugin(object):
     name = 'redis'
     api = 2
 
-    def __init__(self, host='localhost', port=6379, database=0, keyword='rdb'):
-      self.host = host
-      self.port = port
-      self.database = database
+    def __init__(self, keyword='rdb', *args, **kwargs):
       self.keyword = keyword
       self.redisdb = None
+      self.args = args
+      self.kwargs = kwargs
 
     def setup(self, app):
         for other in app.plugins:
@@ -23,9 +22,7 @@ class RedisPlugin(object):
                 raise PluginError("Found another redis plugin with "\
                         "conflicting settings (non-unique keyword).")
         if self.redisdb is None:
-            self.redisdb = redis.ConnectionPool(host=self.host,
-                                                port=self.port,
-                                                db=self.database)
+            self.redisdb = redis.ConnectionPool(*self.args, **self.kwargs)
 
     def apply(self, callback, route):
         # hack to support bottle v0.9.x
