@@ -46,9 +46,9 @@ class RedisTest(unittest.TestCase):
             self.assertTrue(rdb.connection_pool.connection_kwargs['decode_responses'] == True)
             rdb.set('test', 'bottle')
             if py3k:
-                self.assertEqual(rdb.get('test'), 'bottle')
+                self.assertEqual(rdb.get('test'), b'bottle')
             else:
-                self.assertEqual(rdb.get('test'), u'bottle')
+                self.assertEqual(rdb.get('test'), 'bottle')
         self.app({'PATH_INFO':'/db/1', 'REQUEST_METHOD':'GET'},
                  lambda x,y: None)
         
