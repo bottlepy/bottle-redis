@@ -56,5 +56,5 @@ The following configuration options exist for the plugin class:
 
 * **host**: Host on which the Redis server is located (default: localhost ).
 * **port**: Port on which the Redis server is listening (default: 6379)
-* **database** : Select the database to use (default: 0)
+* **db** : Select the database to use (default: 0)
 * **keyword**: The keyword argument name that triggers the plugin (default: 'rdb').
