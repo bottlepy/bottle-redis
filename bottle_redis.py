@@ -34,7 +34,10 @@ class RedisPlugin(object):
             _callback = route.callback
 
         conf = config.get('redis') or {}
-        args = inspect.getargspec(_callback)[0]
+        try:
+            args = inspect.getargspec(_callback)[0]
+        except ValueError:
+            args = inspect.getfullargspec(_callback)[0]  # FIXME deprecated since Python 3.5
         keyword = conf.get('keyword', self.keyword)
         if keyword not in args:
             return callback
